@@ -33,8 +33,8 @@
  
 }
 .button:hover{
-  background-color: #fff;
-  color: #000000;
+  background-color: #000000;
+  color: #00ff1e;
   border: 1px solid #000;
 }
 .buttonex{
@@ -51,8 +51,8 @@
   margin-left: 5px;
 }
 .buttonex:hover{
-  background-color: #fff;
-  color: #000000;
+  background-color: #000000;
+  color: #ff0000;
   border: 1px solid #000;
 }
 .buttoned{
@@ -69,8 +69,8 @@
   margin-left: 5px;
 }
 .buttoned:hover{
-  background-color: #fff;
-  color: #000000;
+  background-color: #000000;
+  color: #002aff;
   border: 1px solid #000;
 }
 .buttonfe{
@@ -94,7 +94,7 @@
 .buttonsa{
   width: 10%;
   height: 30px;
-  background-color: #ff008c;
+  background-color: #ff0062;
   color: #000000;
   border: none;
   border-radius: 5px;
@@ -105,8 +105,8 @@
   margin-left: 5px;
 }
 .buttonsa:hover{
-  background-color: #fff;
-  color: #000000;
+  background-color: #000000;
+  color: #ff0062;
   border: 1px solid #000;
 }
 
