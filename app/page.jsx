@@ -1,21 +1,19 @@
 "use client"
 import React, { Component } from 'react';
 import style from "./page.module.css"
-
 class Task extends Component {
   constructor(props) {
     super(props);
     this.state = {
       tasks: [],
       newTask: '',
-      isPopupOpen: false,
-      editedTaskText: '',
-      editedTaskId: null,
+      abrirPopup: false,
+      editarTask: '',
     };
   }
 
-  handleInputChange = (e) => {
-    this.setState({ newTask: e.target.value });
+  alteraçãoInput = (param) => {
+    this.setState({ newTask: param.target.value });
   };
 
   addTask = () => {
@@ -26,20 +24,20 @@ class Task extends Component {
   };
 
   editTask = (id, newText) => {
-    const updatedTasks = this.state.tasks.map((task) =>
+    const atualizarInput = this.state.tasks.map((task) =>
       task.id === id ? { ...task, text: newText } : task
     );
-    this.setState({ tasks: updatedTasks });
+    this.setState({ tasks: atualizarInput });
   };
 
   deleteTask = (id) => {
-    const updatedTasks = this.state.tasks.filter((task) => task.id !== id);
-    this.setState({ tasks: updatedTasks });
+    const atualizarInput = this.state.tasks.filter((task) => task.id !== id);
+    this.setState({ tasks: atualizarInput });
   };
   openEditPopup = (id, text) => {
     this.setState({
-      isPopupOpen: true,
-      editedTaskText: text,
+      abrirPopup: true,
+      editarTask: text,
       editedTaskId: id,
     });
   };
@@ -47,9 +45,8 @@ class Task extends Component {
 
   closeEditPopup = () => {
     this.setState({
-      isPopupOpen: false,
-      editedTaskText: '',
-      editedTaskId: null,
+      abrirPopup: false,
+      editarTask: '',
     });
   };
 
@@ -63,7 +60,7 @@ class Task extends Component {
             type="text"
             placeholder="Nova tarefa"
             value={this.state.newTask}
-            onChange={this.handleInputChange}
+            onChange={this.alteraçãoInput}
             className={style.input}
           />
           <button onClick={this.addTask} className={style.button}>Adicionar </button>
@@ -74,7 +71,7 @@ class Task extends Component {
               <input
                 type="text"
                 value={task.text}
-                onChange={(e) => this.editTask(task.id, e.target.value)}
+                onChange={(param) => this.editTask(task.id, param.target.value)}
                 className={style.input}
               />
               <button
@@ -87,19 +84,19 @@ class Task extends Component {
         </div>
 
 
-        {this.state.isPopupOpen && (
+        {this.state.abrirPopup && (
           <div className={style.popup}>
             <h2>Editar Tarefa</h2>
             <input
               type="text"
-              value={this.state.editedTaskText}
-              onChange={(e) => this.setState({ editedTaskText: e.target.value })}
+              value={this.state.editarTask}
+              onChange={(param) => this.setState({ editarTask: param.target.value })}
               className={style.input}
             />
             <button onClick={this.closeEditPopup} className={style.buttonfe}>  Fechar </button>
             <button
               onClick={() => {
-                this.editTask(this.state.editedTaskId, this.state.editedTaskText);
+                this.editTask(this.state.editedTaskId, this.state.editarTask);
                 this.closeEditPopup();
               }}
               className={style.buttonsa}> Salvar</button>
